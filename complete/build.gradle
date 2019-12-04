@@ -75,7 +75,7 @@ sourceSets {
     }
 }
 
-mainClassName = 'com.google.capillary.demo.server.DemoServer'
+mainClassName = 'hello.Application'
 
 run {
     if (project.hasProperty("runArgs")) {
