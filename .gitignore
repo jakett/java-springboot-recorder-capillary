@@ -16,3 +16,5 @@ Guardfile
 README.html
 *.iml
 .idea
+
+complete/library/resources/firebase/service-account.json
