@@ -12,8 +12,6 @@ import com.google.firebase.cloud.FirestoreClient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -22,7 +20,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.logging.Logger;
 
 @SpringBootApplication
-@RestController
 public class Application {
     private static final Logger logger = Logger.getLogger(Application.class.getName());
     private static final String PORT_OPTION = "port";
@@ -35,10 +32,10 @@ public class Application {
 
     private static List<QueryDocumentSnapshot> mUserData;
 
-    @RequestMapping("/")
-    public String home() {
-        return "Hello Docker World";
-    }
+//    @RequestMapping("/")
+//    public String home() {
+//        return "Hello Docker World";
+//    }
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);

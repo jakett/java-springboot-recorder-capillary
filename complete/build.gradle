@@ -46,7 +46,9 @@ targetCompatibility = 1.8
 def grpcVersion = '1.7.0' // CURRENT_GRPC_VERSION
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web") 
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-devtools")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     
     implementation project(':library:common')
