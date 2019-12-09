@@ -2,9 +2,44 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<p th:text="'Hello, ' + ${email} + '!'" />
+<div class="header-container">
+    <div class="logo-container">
+        <div class="dl-logo-circle dl-logo"></div>
+    </div>
+    <div class="header-title">Demo recorder app</div>
+</div>
+<div class="global-bar"></div>
+
+<div class="body">
+    <div class="left-pane">
+        <div class="user-list-container">
+            <div class="user-list-title mb-3">User List:</div>
+            <table class="table">
+                <tr th:each="user : ${users}" class="user-item">
+                    <td th:text="${user.getData().get('email')}"></td>
+                    <td>
+                        <button class="btn btn-info" onclick="location.href='${userUrl}'">Activated</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info" onclick="location.href='${userUrl}'">Send Text</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info" onclick="location.href='${userUrl}'">Send Message</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="pane"></div>
+</div>
 </body>
 </html>

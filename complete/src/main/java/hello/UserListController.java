@@ -29,11 +29,11 @@ public class UserListController {
         ApiFuture<QuerySnapshot> query = db.collection("users").get();
         QuerySnapshot querySnapshot = query.get();
         mUserData = querySnapshot.getDocuments();
+        model.addAttribute("users", mUserData);
 
-        for (QueryDocumentSnapshot document : mUserData) {
-            System.out.println("TVT email = " + document.getData().get("email"));
-            model.addAttribute("email", document.getData().get("email"));
-        }
+//        for (QueryDocumentSnapshot document : mUserData) {
+//            System.out.println("TVT email = " + document.getData().get("email"));
+//        }
 
         return "userlist";
     }
