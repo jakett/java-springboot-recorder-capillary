@@ -7,7 +7,8 @@
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css">
-
+    <script src="/js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -27,7 +28,10 @@
                 <tr th:each="user : ${users}" class="user-item">
                     <td th:text="${user.getData().get('email')}"></td>
                     <td>
-                        <button class="btn btn-info" onclick="location.href='${userUrl}'">Activated</button>
+                        <button class="btn btn-info"
+                                th:data-type="'activated'"
+                                th:data-email="|${user.getData().get('email')}|"
+                                onclick="setActivatedUser(this.getAttribute('data-type'), this.getAttribute('data-email'));">Activated</button>
                     </td>
                     <td>
                         <button class="btn btn-info" onclick="location.href='${userUrl}'">Send Text</button>
