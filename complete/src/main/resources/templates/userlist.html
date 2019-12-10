@@ -34,10 +34,16 @@
                                 onclick="setActivatedUser(this.getAttribute('data-type'), this.getAttribute('data-email'));">Activated</button>
                     </td>
                     <td>
-                        <button class="btn btn-info" onclick="location.href='${userUrl}'">Send Text</button>
+                        <button class="btn btn-info"
+                                th:data-type="'sendtext'"
+                                th:data-email="|${user.getData().get('email')}|"
+                                onclick="setActivatedUser(this.getAttribute('data-type'), this.getAttribute('data-email'));">Send Text</button>
                     </td>
                     <td>
-                        <button class="btn btn-info" onclick="location.href='${userUrl}'">Send Message</button>
+                        <button class="btn btn-info"
+                                th:data-type="'sendimage'"
+                                th:data-email="|${user.getData().get('email')}|"
+                                onclick="setActivatedUser(this.getAttribute('data-type'), this.getAttribute('data-email'));">Send Message</button>
                     </td>
                 </tr>
             </table>

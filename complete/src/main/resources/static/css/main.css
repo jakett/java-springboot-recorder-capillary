@@ -116,4 +116,9 @@
     background-color: #65676f;
     border: none;
     font-size: 14px;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 150px;
+    min-width: 100px;
 }

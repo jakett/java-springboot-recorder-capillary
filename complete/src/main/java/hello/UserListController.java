@@ -44,8 +44,10 @@ public class UserListController {
                     handleActivatedForUser(jsonObject.get("value").toString());
                     break;
                 case "sendtext":
+                    System.out.println("TVT go to sendText, email = " + jsonObject.get("value").toString());
                     break;
                 case "sendimage":
+                    System.out.println("TVT go to sendImage, email = " + jsonObject.get("value").toString());
                     break;
                 default:
             }
