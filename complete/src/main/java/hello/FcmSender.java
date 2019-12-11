@@ -61,22 +61,38 @@ final class FcmSender {
   /**
    * Sends notification message to FCM for delivery to registered devices.
    */
-  void sendDataMessage(String token, Map<String, String> dataMap) throws IOException {
-    JsonObject requestJson = buildRequest(token, dataMap);
+  void sendDataMessage(String token, Map<String, String> dataMap, Map<String, String> dataMapIos) throws IOException {
+    JsonObject requestJson = buildRequest(token, dataMap, dataMapIos);
     logger.info("FCM request JSON for data message:");
     prettyPrint(requestJson);
     sendMessage(requestJson);
   }
 
-  private static JsonObject buildRequest(String token, Map<String, String> dataMap) {
+  private static JsonObject buildRequest(String token, Map<String, String> dataMap, Map<String, String> dataMapIos) {
     JsonObject dataJson = new JsonObject();
     for (Map.Entry<String, String> entry : dataMap.entrySet()) {
       dataJson.addProperty(entry.getKey(), entry.getValue());
     }
 
+    JsonObject dataJsonIos = new JsonObject();
+    for (Map.Entry<String, String> entry : dataMapIos.entrySet()) {
+      dataJsonIos.addProperty(entry.getKey(), entry.getValue());
+    }
+
+    JsonObject test1 = new JsonObject();
+    test1.addProperty("mutable-content", 1);
+
+    JsonObject test2 = new JsonObject();
+    test2.add("aps", test1);
+
+    JsonObject test3 = new JsonObject();
+    test3.add("payload", test2);
+
     JsonObject messageJson = new JsonObject();
     messageJson.addProperty("token", token);
     messageJson.add("data", dataJson);
+    messageJson.add("notification", dataJsonIos);
+    messageJson.add("apns", test3);
 
     JsonObject requestJson = new JsonObject();
     requestJson.add("message", messageJson);

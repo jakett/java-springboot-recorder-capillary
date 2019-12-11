@@ -126,15 +126,17 @@ final class DemoServiceImpl extends DemoServiceGrpc.DemoServiceImplBase {
 
       // Create the data map to be sent as a JSON object.
       Map<String, String> dataMap = new HashMap<>();
-//      dataMap.put(Constants.CAPILLARY_CIPHERTEXT_KEY, ciphertextString);
-//      dataMap.put(Constants.CAPILLARY_KEY_ALGORITHM_KEY, req.getKeyAlgorithm().name());
       dataMap.put("capillary_ciphertext", ciphertextString);
       dataMap.put("capillary_key_algorithm", req.getKeyAlgorithm().name());
+
+      Map<String, String> dataMapIos = new HashMap<>();
+      dataMapIos.put("body", ciphertextString);
+      dataMapIos.put("title", KeyAlgorithm.RSA_ECDSA.name());
 
       // Send the data map after the requested delay.
       executorService.schedule(() -> {
         try {
-          fcmSender.sendDataMessage(token, dataMap);
+          fcmSender.sendDataMessage(token, dataMap, dataMapIos);
         } catch (IOException e) {
           e.printStackTrace();
         }

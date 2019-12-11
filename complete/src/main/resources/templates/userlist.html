@@ -29,21 +29,32 @@
                     <td th:text="${user.getData().get('email')}"></td>
                     <td>
                         <button class="btn btn-info"
+                                th:if="${user.getData().get('activated')}==false"
                                 th:data-type="'activated'"
                                 th:data-email="|${user.getData().get('email')}|"
-                                onclick="setActivatedUser(this.getAttribute('data-type'), this.getAttribute('data-email'));">Activated</button>
+                                onclick="setActivatedUser(this.getAttribute('data-type'), this.getAttribute('data-email'), null);">
+                            Activated
+                        </button>
                     </td>
                     <td>
                         <button class="btn btn-info"
+                                th:if="${user.getData().get('activated')}==true"
                                 th:data-type="'sendtext'"
                                 th:data-email="|${user.getData().get('email')}|"
-                                onclick="setActivatedUser(this.getAttribute('data-type'), this.getAttribute('data-email'));">Send Text</button>
+                                th:data-activated="|${user.getData().get('activated')}|"
+                                onclick="setActivatedUser(this.getAttribute('data-type'), this.getAttribute('data-email'), this.getAttribute('data-activated'));">
+                            Send Text
+                        </button>
                     </td>
                     <td>
                         <button class="btn btn-info"
+                                th:if="${user.getData().get('activated')}==true"
                                 th:data-type="'sendimage'"
                                 th:data-email="|${user.getData().get('email')}|"
-                                onclick="setActivatedUser(this.getAttribute('data-type'), this.getAttribute('data-email'));">Send Message</button>
+                                th:data-activated="|${user.getData().get('activated')}|"
+                                onclick="setActivatedUser(this.getAttribute('data-type'), this.getAttribute('data-email'), this.getAttribute('data-activated'));">
+                            Send Image
+                        </button>
                     </td>
                 </tr>
             </table>
@@ -53,3 +64,5 @@
 </div>
 </body>
 </html>
+
+<!--<input class="input-file" type="file" id="input" multiple onchange="handleFiles(event)">-->

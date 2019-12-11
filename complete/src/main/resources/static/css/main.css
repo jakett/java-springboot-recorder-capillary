@@ -113,6 +113,7 @@
 }
 
 .btn-info {
+    position: relative;
     background-color: #65676f;
     border: none;
     font-size: 14px;
@@ -121,4 +122,10 @@
     text-overflow: ellipsis !important;
     max-width: 150px;
     min-width: 100px;
+    max-height: 33px;
+}
+
+.input-file {
+    position: absolute;
+    opacity: 0;
 }
